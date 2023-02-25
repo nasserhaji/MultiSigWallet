@@ -1,4 +1,6 @@
 # Smart Contract for a Multi-Signature Wallet & Token Wallet
+This smart contract program defines a multi-signature wallet that requires multiple signatures to access the funds. It can be used as a secure way to manage assets that require more than one person's approval for transactions.
+
 ## Overview
 This smart contract program defines a multi-signature wallet that requires multiple signatures to access the funds. It can be used as a secure way to manage assets that require more than one person's approval for transactions.
 This smart contract is designed to create a wallet for storing ERC20 tokens. It allows users to add new tokens to their wallet, view their token balances, and transfer tokens to other addresses.
