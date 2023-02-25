@@ -30,7 +30,7 @@ This smart contract program provides several benefits:
 * It is decentralized, meaning that there is no need for a trusted third party to manage the wallet.
 * It provides transparency and immutability by recording all transactions and confirmations on the Ethereum blockchain.
 * It is programmable, meaning that it can execute transactions automatically without the need for manual intervention.
-* 
+
 The last benefit is particularly useful in cases where multiple transactions need to be executed automatically. For example, a business could use this smart contract to manage payroll for its employees. The contract could be programmed to execute salary payments on a specific day each month, without the need for manual intervention from the business owners. This reduces the risk of errors and improves efficiency.
 
 Overall, this smart contract program provides a powerful tool for managing assets securely and programmatically on the Ethereum blockchain.
