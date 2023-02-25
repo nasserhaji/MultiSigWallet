@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Token Information</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container mt-5">
+		<h1>Token Information</h1>
+		<hr>
+		<div class="row">
+			<div class="col-md-4">
+				<h4>Token Contract Address:</h4>
+			</div>
+			<div class="col-md-8">
+				<p id="contract-address"></p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<h4>Token Name:</h4>
+			</div>
+			<div class="col-md-8">
+				<p id="token-name"></p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<h4>Token Symbol:</h4>
+			</div>
+			<div class="col-md-8">
+				<p id="token-symbol"></p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<h4>Total Supply:</h4>
+			</div>
+			<div class="col-md-8">
+				<p id="total-supply"></p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<h4>Decimals:</h4>
+			</div>
+			<div class="col-md-8">
+				<p id="decimals"></p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<h4>Owner:</h4>
+			</div>
+			<div class="col-md-8">
+				<p id="owner"></p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<h4>Balance:</h4>
+			</div>
+			<div class="col-md-8">
+				<p id="balance"></p>
+			</div>
+		</div>
+        <h1>Token Transactions</h1>
+        <h2>Deposit</h2>
+        <form>
+            <label for="deposit-address">Recipient Address:</label>
+            <input type="text" id="deposit-address" name="deposit-address">
+            <label for="deposit-amount">Amount:</label>
+            <input type="text" id="deposit-amount" name="deposit-amount">
+            <button type="button" onclick="deposit()">Deposit</button>
+        </form>
+        <h2>Withdraw</h2>
+        <form>
+            <label for="withdraw-address">Recipient Address:</label>
+            <input type="text" id="withdraw-address" name="withdraw-address">
+            <label for="withdraw-amount">Amount:</label>
+            <input type="text" id="withdraw-amount" name="withdraw-amount">
+            <button type="button" onclick="withdraw()">Withdraw</button>
+        </form>
+        <h2>Transaction History</h2>
+        <table id="transaction-table">
+            <tr>
+                <th>From</th>
+                <th>To</th>
+                <th>Amount</th>
+                <th>Date</th>
+            </tr>
+        </table>
+	</div>
+        <script>
+            const tokenContractAddress = '0x456...'; // Replace with your own token contract address
+            const tokenContract = new web3.eth.Contract(TokenContract.abi, tokenContractAddress);
+    
+            const transactionTable = document.getElementById('transaction-table');
+    
+            const addTransaction = (from, to, amount, date) => {
+                const row = document.createElement('tr');
+                const fromCell = document.createElement('td');
+                const toCell = document.createElement('td');
+                const amountCell = document.createElement('td');
+                const dateCell = document.createElement('td');
+                fromCell.textContent = from;
+                toCell.textContent = to;
+                amountCell.textContent = amount;
+                dateCell.textContent = date;
+                row.appendChild(fromCell);
+                row.appendChild(toCell);
+                row.appendChild(amountCell);
+                row.appendChild(dateCell);
+                transactionTable.appendChild(row);
+            };
+    
+            const deposit = async () => {
+                try {
+                    const depositAddress = document.getElementById('deposit-address').value;
+                    const depositAmount = document.getElementById('deposit-amount').value;
+                    const accounts = await web3.eth.getAccounts();
+                    const sender = accounts[0];
+                    const tx = await tokenContract.methods.transfer(depositAddress, depositAmount).send({from: sender});
+                    console.log('Transaction successful. Transaction hash:', tx.transactionHash);
+                    const now = new Date();
+                    addTransaction(sender, depositAddress, depositAmount, now.toISOString());
+                } catch (error) {
+                    console.error('Error depositing tokens:', error);
+                }
+            };
+    
+            const withdraw = async () => {
+                try {
+                    const withdrawAddress = document.getElementById('withdraw-address').value;
+                    const withdrawAmount = document.getElementById('withdraw-amount').value;
+                    const accounts = await web3.eth.getAccounts();
+                    const sender = accounts[0];
+                    const tx = await tokenContract.methods.transfer(sender, withdrawAmount).send({from: withdrawAddress});
+                    console.log('Transaction successful. Transaction hash:', tx.transactionHash);
+                    const now = new Date();
+                    addTransaction(withdrawAddress, sender, withdrawAmount, now.toISOString());
+                } catch (error) {
+                    console.error('Error withdrawing tokens:', error);
+                }
+            };
+        </script>
+	<script src="./js/web3.min.js"></script>
+	<script src="./js/token.js"></script>
+</body>
+</html>
