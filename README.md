@@ -1,8 +1,11 @@
 # Smart Contract for a Multi-Signature Wallet & Token Wallet
 ## Overview
 This smart contract program defines a multi-signature wallet that requires multiple signatures to access the funds. It can be used as a secure way to manage assets that require more than one person's approval for transactions.
+
 This smart contract program defines a multi-signature wallet that requires multiple signatures to access the funds. It can be used as a secure way to manage assets that require more than one person's approval for transactions.
+
 This smart contract is designed to create a wallet for storing ERC20 tokens. It allows users to add new tokens to their wallet, view their token balances, and transfer tokens to other addresses.
+
 This smart contract was written in Solidity, a programming language for smart contracts on the Ethereum blockchain. It utilizes the OpenZeppelin library for ERC20 token functionality.
 
 ## Implementation
