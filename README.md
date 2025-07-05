@@ -93,4 +93,14 @@ The last benefit is particularly useful in cases where multiple transactions nee
 In conclusion, the Smart Wallet and Token contracts presented in this document provide a secure and efficient way to manage ether and tokens on the Ethereum network. By deploying and using these contracts, users can enjoy the benefits of a decentralized financial system that is transparent, secure, and accessible to all. We hope that this document has provided you with the necessary information to get started with using the Smart Wallet and Token contracts in your own Ethereum-based applications.
 
 Overall, this smart contract program provides a powerful tool for managing assets securely and programmatically on the Ethereum blockchain.
+## 📜 License
+
+This project is licensed under a **Custom NonCommercial Attribution License**.
+
+- ✅ Free to use, modify, and share for **non-commercial** and **educational** purposes
+- ❌ **Commercial use, resale, or monetization** is strictly prohibited without prior written consent
+- 📛 Attribution required: Developed by Mohammad Nasser Haji Hashemabad (https://mohammadnasser.com)
+
+📬 For commercial licensing or inquiries: [info@mohammadnasser.com](mailto:info@mohammadnasser.com)
+
 
